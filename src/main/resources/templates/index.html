@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<title>Spring Boot Project Demo 9</title>
+
+<!-- Se cargan los estilos particulares de la vista -->
+<link rel="stylesheet" href="./styles/index.css">
+
+<!-- Carga de la librería base de jquery -->
+<script src="./jquery/jquery-3.6.0.min.js"></script>
+
+<!-- Carga de los js relativos a la vista -->
+<script src="./js/index.js"></script>
+
+</head>
+<body>
+    <div class="cabecera">
+        <div class="cab1"></div>
+        <div class="cap2"></div>
+    </div>
+    <div class="cuerpo">
+        <div class="panel1">
+            <div class="nota"><div class="notacab1"><p>Proyecto</p></div>
+                              <div class="notabody"><p style="text-align: center;"><span>#Spring Boot Project Demo 9</span></p>
+                            </div>
+            </div>
+            <div class="nota"><div class="notacab1"><p>Objetivos</p></div>
+                              <div class="notabody"><p class="objetivos">- <b>P</b>eticiones asincronas bajo Spring Security.</p>
+                              						<p class="objetivos">- <b>C</b>onocer la necesidad de explotar el token de csrf protection para realizar peticiones seguras al servidor.</p>     
+                              </div>        
+                            
+            </div>
+            <div class="nota"><div class="notacab2"><p>Entorno de Desarrollo</p></div>
+                              <div class="notabody"><p><span>Ide:</span> Sprint Tool Suite, versión: 4</p>
+                                                    <p><span>Servidor de referencia:</span> Apache Tomcat, versión: 10</p>
+                                                    <p><span>Jdk:</span> OpenJdk, versión: 17.1</p>
+                            </div>
+            </div>
+            <div class="nota"><div class="notacab2"><p>Estandar de Desarrollo</p></div>
+                              <div class="notabody"><p><span>Gestor de proyecto:</span> Maven, versión: 4</p>
+                            </div>
+            </div> 
+            <div class="nota"><div class="notacab2"><p>Dependencias</p></div>
+                              <div class="notabody"><p><span>Spring Boot Framework:</span> Spring, versión 3.1.*. Módulos: spring-boot-starter-web, spring-boot-starter-tomcat, tomcat-embed-jasper, tomcat-embed-jasper, jackson-databind, spring-boot-starter-security</p>
+                              <div class="notabody"><p><span>Librería front-end:</span> JQuery, versión 3.6.0</p></div>
+                            </div>
+            </div>    
+            <div class="nota"><div class="notacab2"><p>Documentación y Sitios de Interés</p></div>
+                              <div class="notabody"><p><a href="https://mvnrepository.com/" target="_blank">Ir a</a> Maven Repository</p>
+                                                    <p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/" target="_blank">Leer</a> Documentación de Spring</p>
+                                                    <p><a href="https://api.jquery.com/jQuery.ajax/" target="_blank">Leer</a> Documentación Ajax Jquery</p>
+                                                    <p><a href="https://docs.spring.io/spring-security/reference/features/exploits/csrf.html" target="_blank">Leer</a> Documentación CSRF protection</p>
+                            </div>
+            </div>         
+        </div>
+        <div class="panel2">
+            <div class="item"><p style="text-align: center;"><span>Ejemplo 1 - Petición asíncrona, método Post y retorno de JSON:</span></p>
+            				  <div>
+									<form name="F1" action="#">
+	                              		<p><label>Empresa: </label> <input type="text" id="F1organizacion" /><p>
+	                              		<p><label>CIF: </label> <input type="text" id="F1cif" /><p>
+	                              		<p><label>Antigüedad: </label> <input type="number" id="F1antiguedad" min="1" max="120" step="1" /><p>
+	                              		<br>
+	                              		<div><input id="F1BtnSend" type="button" value="Enviar" /></div>
+	                              	</form>
+                              	</div>
+            				<div id="CapaEjemplo1"></div>			  
+            </div> 
+            <div class="item"><p style="text-align: center;"><span>Peticiones Asíncronas con CSRF Protection</span></p>
+            				  <p>Para poder enviar datos al servidor por POST y GET bajo la influencia de Spring Security con CSRF Protection, es necesario incluir en la cabecera http de la petición al servidor, el token de seguridad CSRF.</p>
+            				  <p>En este ejemplo, se ha utilizado la librería JQuery pero en líneas generales los pasos a realizar son los mismos con cualquier otra librería, framework o con typescript.</p><br>
+            				  <p>Para realizar peticiones asíncronas siga los siguientes pasos:</p>	
+            				  <p><b>1º </b>Añada en la cabecera de la vista principal el meta con el token.</p>	
+            				  <p><img src="./img/tokencsrf.jpg" alt="tokens"/></p>	  
+            				  <p><b>2º </b>Desde el código JavaScript, recoja el valor del token.</p>
+            				  <p><img src="./img/jscsrf1.jpg" alt="tokens"/></p>
+            				  <p><b>3º </b>Desde el código JavaScript, modifique el código donde se realiza la petición al servidor para añadir en la cabecera http el token csrf.</p>
+            				  <p><img src="./img/jscsrf2.jpg" alt="tokens" width="768" height="380"/></p>	
+            </div> 
+        </div>
+   </div>
+
+<div class="pie"><p><span>©</span> 2023 - Daniel Pérez Pérez</p></div>
+
+</body>
+</html>
